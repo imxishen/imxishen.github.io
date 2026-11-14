@@ -63,6 +63,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
 .speed button.on{background:var(--green);color:#fff;border-color:var(--green)}
 .speed button.on small{color:#d9ecdf}
 .sheet,.sheet-backdrop,.drawer-backdrop{display:none}
+.m-head,.m-progress,.m-sent-head,.no-sent,.m-full-row{display:none}
 @media (max-width:680px){
   .main{flex-direction:column}
   .img-wrap{flex:none;height:44dvh;width:100%}
@@ -93,6 +94,52 @@ body.shelf-closed .shelf-open-btn{display:flex}
   .sheet-head button{border:1px solid var(--line);background:#fff;border-radius:8px;width:30px;height:30px}
   .sheet .speed{display:grid}
   .sheet .auto-row{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+  /* ==== redesign v1 (mobile only, per reference mock) ==== */
+  body{background:#fffaf0}
+  .main{background:#fffaf0;display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+  .m-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px 10px}
+  .m-head button{width:40px;height:40px;flex:none;border:none;background:transparent;color:var(--green-d);display:flex;align-items:center;justify-content:center}
+  .m-head button svg{width:24px;height:24px}
+  .m-title{flex:1;min-width:0;text-align:center;padding-top:1px}
+  .m-title h1{font-size:21px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .m-title p{font-size:13px;color:#8a8171;margin-top:3px}
+  .img-wrap{flex:none;height:auto;min-height:0;max-height:52dvh;width:auto;margin:2px 16px 0;border-radius:18px;overflow:hidden;background:#fdf6e3;box-shadow:0 2px 10px rgba(60,45,20,.08)}
+  .fab{display:none!important}
+  .page-badge{display:none}
+  .panel{flex:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));gap:10px;background:#fffaf0;border-top:none}
+  .img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+  /* compact mode for short screens (<=780px tall): trim panel spacing so two-sentence pages + full-read row still fit one screen */
+  @media (max-height:780px){
+    .panel{gap:8px;padding-top:10px}
+    .sent{padding:10px 12px}
+    .m-full-row{padding:11px}
+    .pager button{padding:13px}
+    .img-wrap{min-height:0}
+    .pager{margin-top:10px}
+  }
+  .pager{margin-top:14px}
+  .m-full-row{display:block;width:100%;border:none;background:var(--green);color:#fff;border-radius:14px;padding:14px;font-size:16px;font-weight:700}
+  .m-full-row.stop{background:var(--amber)}
+  .slider-row{display:none}
+  .m-progress{display:block}
+  .m-progress-row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:#7a7263}
+  .m-progress-row b{color:var(--green-d);font-size:15px}
+  .m-prog-bar{height:8px;background:#eae1c9;border-radius:999px;margin-top:8px;overflow:hidden;position:relative}
+  .m-prog-fill{height:100%;width:0%;background:var(--green);border-radius:999px;transition:width .25s}
+  .sentences{flex:none;overflow:visible}
+  .m-sent-head{display:flex;justify-content:space-between;align-items:center}
+  .m-sent-head .t{font-size:17px;font-weight:700}
+  .sent{background:#f7efdb;border:none;border-radius:16px;padding:12px 14px;gap:12px;font-size:18px;box-shadow:none}
+  .sent .sp{width:42px;height:42px;border-radius:50%;background:var(--green)}
+  .sent.playing{background:#dff2e4}
+  .no-sent{display:block;border:1.5px dashed #d8cdb0;border-radius:16px;padding:16px 14px;text-align:center;color:#8a8171;font-size:15px;background:#fffdf7}
+  .pager{gap:12px}
+  .pager-num{display:none!important}
+  .pager button{padding:16px;border-radius:14px;font-size:17px}
+  .pager button svg{display:none}
+  .pager #prevBtn{background:#fff;border:1.5px solid #e0d6ba}
+  .pager #nextBtn{background:var(--green);border-color:var(--green);color:#fff}
+  .pager #nextBtn:disabled{background:var(--green)}
 }
 </style>
 </head>
@@ -105,6 +152,11 @@ body.shelf-closed .shelf-open-btn{display:flex}
   </aside>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <main class="main">
+    <header class="m-head">
+      <button id="mShelfBtn" aria-label="打开书架"></button>
+      <div class="m-title"><h1 id="mBookTitle"></h1><p id="mBookSub"></p></div>
+      <button id="mSettingsBtn" aria-label="打开设置"></button>
+    </header>
     <div class="img-wrap" id="imgWrap">
       <img id="pageImg" alt="绘本插图">
       <button class="fab fab-shelf" id="fabShelf" aria-label="打开书架"></button>
@@ -113,6 +165,13 @@ body.shelf-closed .shelf-open-btn{display:flex}
       <button class="fab fab-full" id="fabFull" aria-label="全文朗读">全</button>
     </div>
     <section class="panel">
+      <div class="m-progress">
+        <div class="m-progress-row"><span>阅读进度</span><b id="mProgNum">0 / 16</b></div>
+        <div class="m-prog-bar" id="mProgBar"><div class="m-prog-fill" id="mProgFill"></div></div>
+      </div>
+      <div class="m-sent-head">
+        <span class="t" id="mSentTitle">本页朗读</span>
+      </div>
       <div class="panel-head">
         <span class="tag" id="bookTag">OXFORD READING TREE · LEVEL 3</span>
         <h1 id="bookTitle"></h1>
@@ -123,6 +182,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
         <span class="slider-num" id="sliderNum">封面</span>
       </div>
       <div class="sentences" id="sentences"></div>
+      <button class="m-full-row" id="mFullBtn">朗读整本</button>
       <div class="pager">
         <button id="prevBtn"></button>
         <span class="pager-num" id="pagerNum">封面</span>
@@ -166,6 +226,10 @@ function $(id){ return document.getElementById(id); }
 $('shelfOpenBtn').innerHTML = IC.book + '<span>书架</span>';
 $('shelfCloseBtn').innerHTML = IC.chevL;
 $('fabShelf').innerHTML = IC.book;
+IC.books = '<svg class="ic" width="24" height="24" viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)"><rect x="3" y="4" width="4.6" height="16" rx="1" fill="currentColor"/><rect x="8.3" y="4" width="4.6" height="16" rx="1" fill="currentColor"/><path d="M5.3 6.2v11.6" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/><path d="M10.6 6.2v11.6" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/><g transform="rotate(17 15.4 4.6)"><rect x="13.1" y="4.6" width="4.6" height="15.4" rx="1" fill="currentColor"/><path d="M15.4 6.8v11" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/></g></g></svg>';
+IC.gearL = '<svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.94 4.61 L9.33 4.46 L9.73 4.33 L10.13 4.22 L9.60 1.98 L11.19 1.73 L12.81 1.73 L14.40 1.98 L13.87 4.22 L14.27 4.33 L14.67 4.46 L15.06 4.61 L15.06 4.61 L15.44 4.78 L15.82 4.97 L16.18 5.18 L17.38 3.22 L18.69 4.17 L19.83 5.31 L20.78 6.62 L18.82 7.82 L19.03 8.18 L19.22 8.56 L19.39 8.94 L19.39 8.94 L19.54 9.33 L19.67 9.73 L19.78 10.13 L22.02 9.60 L22.27 11.19 L22.27 12.81 L22.02 14.40 L19.78 13.87 L19.67 14.27 L19.54 14.67 L19.39 15.06 L19.39 15.06 L19.22 15.44 L19.03 15.82 L18.82 16.18 L20.78 17.38 L19.83 18.69 L18.69 19.83 L17.38 20.78 L16.18 18.82 L15.82 19.03 L15.44 19.22 L15.06 19.39 L15.06 19.39 L14.67 19.54 L14.27 19.67 L13.87 19.78 L14.40 22.02 L12.81 22.27 L11.19 22.27 L9.60 22.02 L10.13 19.78 L9.73 19.67 L9.33 19.54 L8.94 19.39 L8.94 19.39 L8.56 19.22 L8.18 19.03 L7.82 18.82 L6.62 20.78 L5.31 19.83 L4.17 18.69 L3.22 17.38 L5.18 16.18 L4.97 15.82 L4.78 15.44 L4.61 15.06 L4.61 15.06 L4.46 14.67 L4.33 14.27 L4.22 13.87 L1.98 14.40 L1.73 12.81 L1.73 11.19 L1.98 9.60 L4.22 10.13 L4.33 9.73 L4.46 9.33 L4.61 8.94 L4.61 8.94 L4.78 8.56 L4.97 8.18 L5.18 7.82 L3.22 6.62 L4.17 5.31 L5.31 4.17 L6.62 3.22 L7.82 5.18 L8.18 4.97 L8.56 4.78 L8.94 4.61 Z"/><circle cx="12" cy="12" r="2.7" stroke-width="2.1"/></svg>';
+$('mShelfBtn').innerHTML = IC.books;
+$('mSettingsBtn').innerHTML = IC.gearL;
 $('fabSettings').innerHTML = IC.gear;
 $('prevBtn').innerHTML = IC.prev + '<span>上一页</span>';
 $('nextBtn').innerHTML = '<span>下一页</span>' + IC.next;
@@ -300,6 +364,8 @@ function setFullBtn(){
   $('fabFull').textContent = fullMode ? '停' : '全';
   $('fabFull').classList.toggle('stop', fullMode);
   $('fabFull').setAttribute('aria-label', fullMode ? '停止全文朗读' : '全文朗读');
+  $('mFullBtn').textContent = fullMode ? '停止朗读' : '朗读整本';
+  $('mFullBtn').classList.toggle('stop', fullMode);
 }
 function startFull(){ stopSeq(); fullMode = true; setFullBtn(); runFull(++seqToken); }
 
@@ -310,6 +376,11 @@ function render(){
   const b = bookData;
   clearPlaying();
   $('bookTitle').textContent = b.title;
+  $('mBookTitle').textContent = b.title;
+  $('mBookSub').textContent = 'Oxford Reading Tree · ' + (b.level || 'Level 3');
+  $('mProgNum').textContent = page + ' / ' + storyTotal();
+  $('mProgFill').style.width = (storyTotal() ? (page / storyTotal() * 100) : 0) + '%';
+  $('mSentTitle').textContent = page === 0 ? '封面朗读' : '本页朗读';
   $('bookTag').textContent = ('OXFORD READING TREE · ' + (b.level || 'LEVEL 3')).toUpperCase();
   ensureImage(page);
   const img = $('pageImg');
@@ -325,6 +396,10 @@ function render(){
     btn.onclick = () => { stopSeq(); playAudioFile(s.audio, btn); };
     box.appendChild(btn);
   });
+  if (cur().sentences.length === 0){
+    const d = document.createElement('div'); d.className = 'no-sent'; d.textContent = '这一页没有文字，看看图画吧';
+    box.appendChild(d);
+  }
   $('prevBtn').disabled = page === 0;
   $('nextBtn').disabled = page === pages().length - 1;
   $('sliderNum').textContent = pageLabel();
@@ -402,6 +477,24 @@ let tx = null;
 $('imgWrap').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
 $('imgWrap').addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 42) { stopSeq(); gotoPage(page + (dx < 0 ? 1 : -1), {read: true}); } }, {passive: true});
 document.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { stopSeq(); gotoPage(page + 1, {read: true}); } if (e.key === 'ArrowLeft') { stopSeq(); gotoPage(page - 1, {read: true}); } });
+
+/* ---- redesign v1 mobile controls ---- */
+$('mShelfBtn').onclick = () => document.body.classList.add('shelf-open');
+$('mSettingsBtn').onclick = () => document.body.classList.add('sheet-open');
+$('mFullBtn').onclick = () => { fullMode ? stopSeq() : startFull(); };
+(() => {
+  const bar = $('mProgBar'); if (!bar) return;
+  const wrap = bar.parentElement;
+  wrap.style.touchAction = 'none';
+  let dragP = null;
+  const ratioOf = (x) => { const r = bar.getBoundingClientRect(); return Math.min(1, Math.max(0, (x - r.left) / r.width)); };
+  const showDrag = () => { $('mProgFill').style.width = (dragP / storyTotal() * 100) + '%'; $('mProgNum').textContent = dragP + ' / ' + storyTotal(); };
+  wrap.addEventListener('pointerdown', (e) => { dragP = Math.round(ratioOf(e.clientX) * storyTotal()); try { wrap.setPointerCapture(e.pointerId); } catch(_){} showDrag(); e.preventDefault(); });
+  wrap.addEventListener('pointermove', (e) => { if (dragP === null) return; dragP = Math.round(ratioOf(e.clientX) * storyTotal()); showDrag(); });
+  const endDrag = () => { if (dragP === null) return; const p = dragP; dragP = null; stopSeq(); if (p !== page) { page = p; render(); if (autoRead && cur() && cur().sentences.length) runPageRead(++seqToken); } else { render(); } };
+  wrap.addEventListener('pointerup', endDrag);
+  wrap.addEventListener('pointercancel', () => { dragP = null; render(); });
+})();
 
 /* ---- boot ---- */
 fetch('books/manifest.json').then(r => r.json()).then(m => {
