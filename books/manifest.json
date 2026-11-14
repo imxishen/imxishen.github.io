@@ -40,5 +40,40 @@
   "level": "Level 3",
   "file": "books/0106.json",
   "thumb": "books/thumb-0106.webp"
+ },
+ {
+  "no": "0107",
+  "title": "At the Seaside",
+  "level": "Level 3",
+  "file": "books/0107.json",
+  "thumb": "books/thumb-0107.webp"
+ },
+ {
+  "no": "0108",
+  "title": "The snowman",
+  "level": "Level 3",
+  "file": "books/0108.json",
+  "thumb": "books/thumb-0108.webp"
+ },
+ {
+  "no": "0109",
+  "title": "At the Pool",
+  "level": "Level 3",
+  "file": "books/0109.json",
+  "thumb": "books/thumb-0109.webp"
+ },
+ {
+  "no": "0110",
+  "title": "The barbecue",
+  "level": "Level 3",
+  "file": "books/0110.json",
+  "thumb": "books/thumb-0110.webp"
+ },
+ {
+  "no": "0111",
+  "title": "Book week",
+  "level": "Level 3",
+  "file": "books/0111.json",
+  "thumb": "books/thumb-0111.webp"
  }
 ]
