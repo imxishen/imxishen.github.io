@@ -1,0 +1,44 @@
+[
+ {
+  "no": "0101",
+  "title": "The rope swing",
+  "level": "Level 3",
+  "file": "books/0101.json",
+  "thumb": "books/thumb-0101.webp"
+ },
+ {
+  "no": "0102",
+  "title": "On the Sand",
+  "level": "Level 3",
+  "file": "books/0102.json",
+  "thumb": "books/thumb-0102.webp"
+ },
+ {
+  "no": "0103",
+  "title": "Strawberry Jam",
+  "level": "Level 3",
+  "file": "books/0103.json",
+  "thumb": "books/thumb-0103.webp"
+ },
+ {
+  "no": "0104",
+  "title": "Kipper the Clown",
+  "level": "Level 3",
+  "file": "books/0104.json",
+  "thumb": "books/thumb-0104.webp"
+ },
+ {
+  "no": "0105",
+  "title": "The jumble sale",
+  "level": "Level 3",
+  "file": "books/0105.json",
+  "thumb": "books/thumb-0105.webp"
+ },
+ {
+  "no": "0106",
+  "title": "Kipper's idea",
+  "level": "Level 3",
+  "file": "books/0106.json",
+  "thumb": "books/thumb-0106.webp"
+ }
+]
