@@ -33,10 +33,11 @@ body.shelf-closed .shelf-open-btn{display:block}
 .fab{display:none}
 .panel{width:344px;flex:none;background:var(--card);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:16px 14px;gap:12px;min-height:0}
 .tag{align-self:flex-start;background:#e3f2e7;color:var(--green-d);font-size:12px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
-.panel h1{font-size:24px;line-height:1.2}
-.zh{color:#7a7263;font-size:14px;margin-top:-6px}
+.panel h1{font-size:27px;line-height:1.25;margin-top:8px}
+.zh{color:#54604f;font-size:16px;font-weight:600;margin-top:3px;line-height:1.4}
+.sent-label{font-weight:700;color:#77816c;font-size:15px}
 .sentences{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:2px}
-.sent{display:flex;align-items:center;gap:10px;text-align:left;background:#fff8e6;border:1.5px solid #eadfc0;border-radius:14px;padding:14px;font-size:19px;font-weight:600;line-height:1.35;color:var(--ink)}
+.sent{display:flex;align-items:center;gap:10px;text-align:left;background:#fdf6de;border:1.5px solid #ead9ae;border-radius:14px;padding:14px;font-size:19px;font-weight:600;line-height:1.35;color:var(--ink)}
 .sent .sp{flex:none;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
 .sent.playing{background:#dff2e4;border-color:var(--green)}
 .pager{display:flex;gap:10px}
@@ -67,7 +68,7 @@ body.shelf-closed .shelf-open-btn{display:block}
   .main{flex-direction:column}
   .img-wrap{flex:none;height:44dvh;width:100%}
   .panel{width:100%;flex:1;border-left:none;border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:8px}
-  .panel-head,.zh,.read-row,.speed-sec{display:none}
+  .panel-head,.zh,.read-row,.speed-sec,.sent-label{display:none}
   .slider-row{order:-1}
   .slider-row .slider-num{display:none}
   .sentences{order:0}
@@ -121,6 +122,7 @@ body.shelf-closed .shelf-open-btn{display:block}
         <h1 id="bookTitle">The rope swing</h1>
         <div class="zh">点读绘本</div>
       </div>
+      <div class="sent-label">点句子，听朗读</div>
       <div class="sentences" id="sentences"></div>
       <div class="pager">
         <button id="prevBtn">← 上一页</button>
