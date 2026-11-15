@@ -22,7 +22,11 @@ svg.ic{display:block;flex:none}
 .shelf-item.on{border-color:var(--green);background:#eef7f0}
 .shelf-item img{width:40px;height:49px;object-fit:cover;border-radius:6px;flex:none}
 .shelf-item .t{font-weight:700;font-size:14px;line-height:1.25}
-.shelf-item .s{font-size:12px;color:#7a7263;margin-top:2px}
+.shelf-item .s{display:inline-block;font-size:11px;font-weight:600;color:var(--green-d);background:#e3f2e7;border-radius:999px;padding:2px 7px;margin-top:3px;white-space:nowrap}
+.shelf-item.on .s{background:var(--green);color:#fff}
+.shelf-search{padding:0 12px 8px}
+.shelf-search input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13.5px;background:#fff;color:var(--ink);outline:none;font-family:inherit}
+.shelf-search input:focus{border-color:var(--green)}
 body.shelf-closed .shelf{margin-left:-208px}
 .shelf-open-btn{display:none;position:fixed;left:10px;top:10px;z-index:30;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.12);align-items:center;gap:6px;color:var(--ink)}
 body.shelf-closed .shelf-open-btn{display:flex}
@@ -60,8 +64,8 @@ body.shelf-closed .shelf-open-btn{display:flex}
 .slider-row input[type=range]{flex:1;accent-color:var(--green);height:28px}
 .slider-num{font-weight:700;white-space:nowrap}
 .read-row{display:flex;align-items:center;gap:12px}
-.full-btn{flex:1;background:var(--green);color:#fff;border:none;border-radius:12px;padding:13px;font-size:16px;font-weight:700}
-.full-btn.stop{background:var(--amber)}
+.full-btn{background:#fff;color:var(--green-d);border:1.5px solid var(--green);border-radius:12px;padding:13px;font-size:16px;font-weight:700}
+.full-btn.stop{background:var(--amber);border-color:var(--amber);color:#fff}
 .auto-wrap{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;white-space:nowrap}
 .switch{position:relative;width:48px;height:27px;flex:none}
 .switch input{opacity:0;width:100%;height:100%;position:absolute;margin:0;cursor:pointer;z-index:2}
@@ -76,13 +80,36 @@ body.shelf-closed .shelf-open-btn{display:flex}
 .speed button small{display:block;font-weight:500;color:#7a7263;font-size:11px}
 .speed button.on{background:var(--green);color:#fff;border-color:var(--green)}
 .speed button.on small{color:#d9ecdf}
+.util-wrap{position:relative}
+.util-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px}
+.speed-chip{display:flex;align-items:center;gap:7px;border:1.5px solid #d8cdb0;background:#fff;border-radius:12px;padding:9px 14px;font-size:15px;font-weight:700;color:var(--ink)}
+.speed-chip.on{border-color:var(--green);background:#eef7f0;color:var(--green-d)}
+.gear-btn{width:42px;height:42px;border:1.5px solid #d8cdb0;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.gear-btn.on{border-color:var(--green);background:#eef7f0;color:var(--green-d)}
+.pop{position:absolute;bottom:calc(100% + 10px);background:#fff;border:1.5px solid var(--green);border-radius:14px;box-shadow:0 8px 24px rgba(60,45,20,.16);opacity:0;pointer-events:none;transform:translateY(4px);transition:.18s;z-index:20}
+.pop.show{opacity:1;pointer-events:auto;transform:none}
+.speed-pop{left:0;min-width:132px;padding:6px;display:flex;flex-direction:column}
+.speed-pop button{border:none;background:none;padding:10px 14px;font-size:15.5px;font-weight:600;border-radius:9px;text-align:center;color:var(--ink);font-family:inherit;cursor:pointer}
+.speed-pop button.on{background:#e3f2e7;color:var(--green-d);font-weight:700}
+.set-pop{right:0;width:264px;padding:8px 14px}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0}
+.set-row .tx b{display:block;font-size:15px}
+.set-row .tx span{font-size:12.5px;color:#7a7263}
+.set-div{height:1px;background:var(--line);margin:3px 0}
+.chain-chips{display:none;gap:8px;margin:6px 0 8px}
+.chain-chips.show{display:flex}
+.chain-chips button{flex:1;padding:9px;border-radius:10px;border:1.5px solid #d8cdb0;background:#fff;font-size:14.5px;font-weight:700;color:var(--ink);font-family:inherit;cursor:pointer}
+.chain-chips button.on{background:var(--green);border-color:var(--green);color:#fff}
 .sheet,.sheet-backdrop,.drawer-backdrop{display:none}
 .m-head,.m-progress,.m-sent-head,.no-sent,.m-full-row{display:none}
 @media (max-width:680px){
   .main{flex-direction:column}
   .img-wrap{flex:none;height:44dvh;width:100%}
   .panel{width:100%;flex:1;border-left:none;border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:8px}
-  .panel-head,.read-row,.speed-sec,.loop-sec{display:none}
+  .panel-head,.full-btn,#utilD{display:none}
+  .shelf-search{display:none}
+  .shelf-item .s{display:block;background:none;color:#7a7263;font-size:12px;font-weight:400;padding:0;border-radius:0;margin-top:2px}
+  .shelf-item.on .s{background:none;color:#7a7263}
   .slider-row .slider-num{display:none}
   .sent{font-size:17px;padding:12px}
   .pager{align-items:center}
@@ -155,6 +182,14 @@ body.shelf-closed .shelf-open-btn{display:flex}
   .pager #nextBtn{background:var(--green);border-color:var(--green);color:#fff}
   .pager #nextBtn:disabled{background:var(--green)}
 }
+@media (min-width:681px){
+  .pager{gap:12px}
+  .pager button{transition:transform .12s ease,background .12s ease}
+  .pager #prevBtn{flex:.78;padding:11px;font-size:14.5px;background:#fff}
+  .pager #prevBtn:active{transform:scale(.96);background:#efe8d2}
+  .pager #nextBtn{flex:1.3;padding:15px;font-size:16.5px;background:var(--green);border-color:var(--green);color:#fff}
+  .pager #nextBtn:active{transform:scale(.96);background:var(--green-d)}
+}
 </style>
 </head>
 <body>
@@ -162,6 +197,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
   <button class="shelf-open-btn" id="shelfOpenBtn"></button>
   <aside class="shelf" id="shelf">
     <div class="shelf-head"><span>书架</span><button id="shelfCloseBtn" aria-label="收起书架"></button></div>
+    <div class="shelf-search"><input id="shelfSearch" type="search" placeholder="搜索书名或编号" aria-label="搜索书名或编号"></div>
     <div class="shelf-list" id="shelfList"></div>
   </aside>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -203,19 +239,19 @@ body.shelf-closed .shelf-open-btn{display:flex}
         <span class="pager-num" id="pagerNum">封面</span>
         <button id="nextBtn"></button>
       </div>
-      <div class="read-row">
-        <button class="full-btn" id="fullBtn">全文朗读</button>
-        <label class="auto-wrap">翻页自动读
-          <span class="switch"><input type="checkbox" id="autoToggle" checked><span class="tr"></span></span>
-        </label>
-      </div>
-      <div class="speed-sec">
-        <div class="sec-title" style="margin-bottom:8px">语速</div>
-        <div class="speed" id="speedRow"></div>
-      </div>
-      <div class="loop-sec">
-        <div class="sec-title" style="margin-bottom:8px">连读</div>
-        <div class="speed loop" id="loopRow"></div>
+      <button class="full-btn" id="fullBtn">▶ 全文朗读</button>
+      <div class="util-wrap" id="utilD">
+        <div class="util-row">
+          <button class="speed-chip" id="speedChipD" aria-label="语速"></button>
+          <button class="gear-btn" id="gearBtnD" aria-label="设置"></button>
+        </div>
+        <div class="pop speed-pop" id="speedPopD"></div>
+        <div class="pop set-pop" id="setPopD">
+          <div class="set-row"><div class="tx"><b>翻页后自动朗读</b><span>翻页后，自动读出本页</span></div><span class="switch"><input type="checkbox" id="autoToggle" checked><span class="tr"></span></span></div>
+          <div class="set-div"></div>
+          <div class="set-row"><div class="tx"><b>连续播放</b><span>读完一本，自动读下一本</span></div><span class="switch"><input type="checkbox" id="chainToggleD"><span class="tr"></span></span></div>
+          <div class="chain-chips" id="chainChipsD"><button data-v="seq">顺序</button><button data-v="rand">随机</button></div>
+        </div>
       </div>
     </section>
   </main>
@@ -254,6 +290,7 @@ IC.gearL = '<svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="non
 $('mShelfBtn').innerHTML = IC.books;
 $('mSettingsBtn').innerHTML = IC.gearL;
 $('fabSettings').innerHTML = IC.gear;
+IC.gauge = '<svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4.6 16a8.6 8.6 0 1 1 14.8 0"/><path d="M12 14.6 15.9 8.2"/></svg>';
 $('prevBtn').innerHTML = IC.prev + '<span>上一页</span>';
 $('nextBtn').innerHTML = '<span>下一页</span>' + IC.next;
 
@@ -387,13 +424,14 @@ async function runFull(token){
   if (token === seqToken){ fullMode = false; setFullBtn(); clearPlaying(); }
 }
 function setFullBtn(){
-  $('fullBtn').textContent = fullMode ? '停止' : '全文朗读';
+  $('fullBtn').textContent = fullMode ? '停止' : '▶ 全文朗读';
   $('fullBtn').classList.toggle('stop', fullMode);
   $('fabFull').textContent = fullMode ? '停' : '全';
   $('fabFull').classList.toggle('stop', fullMode);
   $('fabFull').setAttribute('aria-label', fullMode ? '停止全文朗读' : '全文朗读');
-  $('mFullBtn').textContent = fullMode ? '停止朗读' : '朗读整本';
+  $('mFullBtn').textContent = fullMode ? '停止朗读' : '▶ 朗读整本';
   $('mFullBtn').classList.toggle('stop', fullMode);
+  syncChain();
 }
 function startFull(){ stopSeq(); fullMode = true; setFullBtn(); runFull(++seqToken); }
 
@@ -480,17 +518,38 @@ function renderShelf(){
   sorted.forEach(entry => {
     const el = document.createElement('button');
     el.className = 'shelf-item'; el.dataset.no = entry.no;
-    el.innerHTML = '<img alt=""><span><span class="t"></span><span class="s" style="display:block"></span></span>';
+    el.innerHTML = '<img alt=""><span><span class="t"></span><span class="s"></span></span>';
     el.querySelector('img').src = entry.thumb;
     el.querySelector('.t').textContent = entry.title;
     el.querySelector('.s').textContent = (entry.level || 'Level 3') + ' · ' + entry.no;
     el.onclick = () => { selectBook(LIB.indexOf(entry)); document.body.classList.remove('shelf-open'); };
     list.appendChild(el);
   });
+  applySearch();
 }
+function applySearch(){
+  const inp = $('shelfSearch'); if (!inp) return;
+  const q = inp.value.trim().toLowerCase();
+  document.querySelectorAll('#shelfList .shelf-item').forEach(el => {
+    const e = LIB.find(b => b.no === el.dataset.no);
+    const hit = !q || (e && (e.title.toLowerCase().includes(q) || e.no.includes(q)));
+    el.style.display = hit ? '' : 'none';
+  });
+}
+$('shelfSearch').addEventListener('input', applySearch);
 let pendingNo = null;
 function markShelf(no){
-  document.querySelectorAll('#shelfList .shelf-item').forEach(el => el.classList.toggle('on', el.dataset.no === no));
+  const mob = window.matchMedia('(max-width: 680px)').matches;
+  document.querySelectorAll('#shelfList .shelf-item').forEach(el => {
+    const on = el.dataset.no === no;
+    el.classList.toggle('on', on);
+    const pill = el.querySelector('.s');
+    if (pill){
+      const e = LIB.find(b => b.no === el.dataset.no);
+      const lv = (e && e.level) || 'Level 3';
+      pill.textContent = (on && !mob) ? ('正在读 · ' + lv) : (lv + ' · ' + el.dataset.no);
+    }
+  });
 }
 function setTitles(e){
   $('bookTitle').textContent = e.title;
@@ -551,8 +610,49 @@ function bindSpeed(row){
     row.appendChild(b);
   });
 }
-function syncSpeed(){ document.querySelectorAll('.speed button').forEach(b => b.classList.toggle('on', parseFloat(b.dataset.v) === rate)); }
-bindSpeed($('speedRow')); bindSpeed($('speedRowM')); syncSpeed();
+const POPRATES = [1.2, 1, 0.85, 0.7, 0.5];
+function rateLabel(v){ return (v === 1 ? '1.0' : String(v)) + '×'; }
+function buildSpeedPop(pop){
+  POPRATES.forEach(v => {
+    const b = document.createElement('button'); b.dataset.v = v; b.textContent = rateLabel(v);
+    b.onclick = () => { rate = v; player.playbackRate = rate; syncSpeed(); closePops(); };
+    pop.appendChild(b);
+  });
+}
+function syncSpeed(){
+  document.querySelectorAll('#speedRowM button').forEach(b => b.classList.toggle('on', parseFloat(b.dataset.v) === rate));
+  document.querySelectorAll('.speed-pop button').forEach(b => b.classList.toggle('on', parseFloat(b.dataset.v) === rate));
+  document.querySelectorAll('.chip-val').forEach(el => el.textContent = rateLabel(rate));
+}
+function closePops(){
+  document.querySelectorAll('.pop').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.speed-chip,.gear-btn').forEach(b => b.classList.remove('on'));
+}
+function bindUtilD(){
+  const chip = $('speedChipD'), gear = $('gearBtnD'), sp = $('speedPopD'), tp = $('setPopD');
+  chip.innerHTML = IC.gauge + '<span class="chip-val"></span>';
+  gear.innerHTML = IC.gearL;
+  chip.onclick = e => { e.stopPropagation(); const open = sp.classList.contains('show'); closePops(); if (!open){ sp.classList.add('show'); chip.classList.add('on'); } };
+  gear.onclick = e => { e.stopPropagation(); const open = tp.classList.contains('show'); closePops(); if (!open){ tp.classList.add('show'); gear.classList.add('on'); } };
+  sp.addEventListener('click', e => e.stopPropagation());
+  tp.addEventListener('click', e => e.stopPropagation());
+}
+function syncChain(){
+  const tg = $('chainToggleD'), ch = $('chainChipsD');
+  if (tg) tg.checked = chainActive;
+  if (ch){ ch.classList.toggle('show', chainActive); ch.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === chainMode)); }
+}
+function bindChainD(){
+  $('chainToggleD').addEventListener('change', e => { if (e.target.checked) startChain(); else stopSeq(); });
+  $('chainChipsD').querySelectorAll('button').forEach(b => {
+    b.onclick = () => { chainMode = b.dataset.v; if (!chainActive) startChain(); else syncChain(); };
+  });
+}
+bindSpeed($('speedRowM'));
+buildSpeedPop($('speedPopD'));
+bindUtilD(); bindChainD();
+syncSpeed(); syncChain();
+document.addEventListener('click', closePops);
 const LOOPS = [{v: 'off', d: '关'}, {v: 'seq', d: '按序号'}, {v: 'rand', d: '随机'}];
 function bindLoop(row){
   LOOPS.forEach(o => {
@@ -566,8 +666,8 @@ function bindLoop(row){
     row.appendChild(b);
   });
 }
-function syncLoop(){ document.querySelectorAll('.loop button').forEach(b => b.classList.toggle('on', b.dataset.v === chainMode)); }
-bindLoop($('loopRow')); bindLoop($('loopRowM')); syncLoop();
+function syncLoop(){ document.querySelectorAll('#loopRowM button').forEach(b => b.classList.toggle('on', b.dataset.v === chainMode)); }
+bindLoop($('loopRowM')); syncLoop();
 function bindAuto(el, other){ el.addEventListener('change', () => { autoRead = el.checked; other.checked = autoRead; }); }
 bindAuto($('autoToggle'), $('autoToggleM')); bindAuto($('autoToggleM'), $('autoToggle'));
 $('fullBtn').onclick = () => { fullMode ? stopSeq() : startFull(); };
