@@ -69,6 +69,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
 .switch .tr:after{content:"";position:absolute;left:3px;top:3px;width:21px;height:21px;background:#fff;border-radius:50%;transition:.2s}
 .switch input:checked + .tr{background:var(--green)}
 .switch input:checked + .tr:after{left:24px}
+.speed.loop{grid-template-columns:repeat(3,1fr)}
 .sec-title{font-weight:700;font-size:15px}
 .speed{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .speed button{border:1.5px solid #d8cdb0;background:#fff;border-radius:10px;padding:8px 2px;font-size:13px;font-weight:700}
@@ -81,7 +82,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
   .main{flex-direction:column}
   .img-wrap{flex:none;height:44dvh;width:100%}
   .panel{width:100%;flex:1;border-left:none;border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:8px}
-  .panel-head,.read-row,.speed-sec{display:none}
+  .panel-head,.read-row,.speed-sec,.loop-sec{display:none}
   .slider-row .slider-num{display:none}
   .sent{font-size:17px;padding:12px}
   .pager{align-items:center}
@@ -212,6 +213,10 @@ body.shelf-closed .shelf-open-btn{display:flex}
         <div class="sec-title" style="margin-bottom:8px">语速</div>
         <div class="speed" id="speedRow"></div>
       </div>
+      <div class="loop-sec">
+        <div class="sec-title" style="margin-bottom:8px">连读</div>
+        <div class="speed loop" id="loopRow"></div>
+      </div>
     </section>
   </main>
 </div>
@@ -221,6 +226,10 @@ body.shelf-closed .shelf-open-btn{display:flex}
   <div>
     <div class="sec-title" style="margin-bottom:8px">语速</div>
     <div class="speed" id="speedRowM"></div>
+  </div>
+  <div>
+    <div class="sec-title" style="margin-bottom:8px">连读</div>
+    <div class="speed loop" id="loopRowM"></div>
   </div>
   <div class="auto-row"><span>翻页自动读</span>
     <span class="switch"><input type="checkbox" id="autoToggleM" checked><span class="tr"></span></span>
@@ -253,6 +262,7 @@ let LIB = [];                 // manifest entries
 const bookCache = new Map();  // no -> Promise<book data>
 let bi = -1, bookData = null, page = 0;
 let rate = 1.0, autoRead = true, seqToken = 0, fullMode = false, loadToken = 0;
+let chainMode = 'rand', chainActive = false;
 
 const book = () => bookData;
 const pages = () => bookData ? bookData.pages : [];
@@ -333,7 +343,7 @@ function playAudioFile(file, btn){
 }
 
 /* ---- sequence engine ---- */
-function stopSeq(){ seqToken++; playSeq++; fullMode = false; setFullBtn(); player.pause(); clearPlaying(); }
+function stopSeq(){ seqToken++; playSeq++; fullMode = false; chainActive = false; setFullBtn(); player.pause(); clearPlaying(); hideVeil(); }
 async function waitImg(p, token){
   const t = new Promise(r => setTimeout(r, 6000));
   await Promise.race([ensureImage(p), t]);
@@ -350,26 +360,30 @@ async function runPageRead(token){
   }
   if (token === seqToken) clearPlaying();
 }
-async function runFull(token){
+async function readBookToEnd(token){
   while (token === seqToken){
-    if (!await waitImg(page, token)) return;
-    if (token !== seqToken) return;
+    if (!await waitImg(page, token)) return false;
+    if (token !== seqToken) return false;
     const sents = cur().sentences;
     if (sents.length === 0){
       await new Promise(r => setTimeout(r, 1200));
-      if (token !== seqToken) return;
+      if (token !== seqToken) return false;
     } else {
       for (let i = 0; i < sents.length; i++){
-        if (token !== seqToken) return;
+        if (token !== seqToken) return false;
         const btn = $('sentences').children[i];
         await playAudioFile(sents[i].audio, btn);
       }
-      if (token !== seqToken) return;
+      if (token !== seqToken) return false;
       clearPlaying();
     }
-    if (page >= pages().length - 1) break;
+    if (page >= pages().length - 1) return true;
     page++; render();
   }
+  return false;
+}
+async function runFull(token){
+  await readBookToEnd(token);
   if (token === seqToken){ fullMode = false; setFullBtn(); clearPlaying(); }
 }
 function setFullBtn(){
@@ -382,6 +396,35 @@ function setFullBtn(){
   $('mFullBtn').classList.toggle('stop', fullMode);
 }
 function startFull(){ stopSeq(); fullMode = true; setFullBtn(); runFull(++seqToken); }
+
+/* ---- chain (loop) playback: settings-driven, not tied to full-read ---- */
+function pickNext(){
+  if (LIB.length <= 1) return bi;
+  if (chainMode === 'seq') return (bi + 1) % LIB.length;
+  let n = bi;
+  while (n === bi) n = Math.floor(Math.random() * LIB.length);
+  return n;
+}
+async function chainLoad(i, token){
+  const entry = LIB[i];
+  markShelf(entry.no); setTitles(entry); showVeil(entry);
+  const data = await fetchBook(entry.no).catch(() => null);
+  if (token !== seqToken) return false;
+  if (!data){ veilError(); return false; }
+  bi = i; bookData = data; page = 0;
+  render(); hideVeil(); preloadBook();
+  return true;
+}
+async function runChain(token){
+  while (token === seqToken && chainActive){
+    const done = await readBookToEnd(token);
+    if (!done || token !== seqToken || !chainActive || chainMode === 'off') break;
+    const ok = await chainLoad(pickNext(), token);
+    if (!ok) break;
+  }
+  if (token === seqToken){ chainActive = false; fullMode = false; setFullBtn(); clearPlaying(); }
+}
+function startChain(){ stopSeq(); chainActive = true; fullMode = true; setFullBtn(); runChain(++seqToken); }
 
 /* ---- render ---- */
 function pageLabel(){ return page === 0 ? '封面' : (page + ' / ' + storyTotal()); }
@@ -510,6 +553,21 @@ function bindSpeed(row){
 }
 function syncSpeed(){ document.querySelectorAll('.speed button').forEach(b => b.classList.toggle('on', parseFloat(b.dataset.v) === rate)); }
 bindSpeed($('speedRow')); bindSpeed($('speedRowM')); syncSpeed();
+const LOOPS = [{v: 'off', d: '关'}, {v: 'seq', d: '按序号'}, {v: 'rand', d: '随机'}];
+function bindLoop(row){
+  LOOPS.forEach(o => {
+    const b = document.createElement('button'); b.dataset.v = o.v;
+    b.textContent = o.d;
+    b.onclick = () => {
+      if (o.v === 'off'){ chainMode = 'off'; syncLoop(); stopSeq(); return; }
+      chainMode = o.v; syncLoop();
+      if (!chainActive) startChain();
+    };
+    row.appendChild(b);
+  });
+}
+function syncLoop(){ document.querySelectorAll('.loop button').forEach(b => b.classList.toggle('on', b.dataset.v === chainMode)); }
+bindLoop($('loopRow')); bindLoop($('loopRowM')); syncLoop();
 function bindAuto(el, other){ el.addEventListener('change', () => { autoRead = el.checked; other.checked = autoRead; }); }
 bindAuto($('autoToggle'), $('autoToggleM')); bindAuto($('autoToggleM'), $('autoToggle'));
 $('fullBtn').onclick = () => { fullMode ? stopSeq() : startFull(); };
