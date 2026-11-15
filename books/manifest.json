@@ -117,5 +117,68 @@
   "level": "Level 3",
   "file": "books/0111.json",
   "thumb": "books/thumb-0111.webp"
+ },
+ {
+  "no": "0112",
+  "title": "Bull's-eye!",
+  "level": "Level 3",
+  "file": "books/0112.json",
+  "thumb": "books/thumb-0112.webp"
+ },
+ {
+  "no": "0113",
+  "title": "The Carnival",
+  "level": "Level 3",
+  "file": "books/0113.json",
+  "thumb": "books/thumb-0113.webp"
+ },
+ {
+  "no": "0114",
+  "title": "The Cold Day",
+  "level": "Level 3",
+  "file": "books/0114.json",
+  "thumb": "books/thumb-0114.webp"
+ },
+ {
+  "no": "0115",
+  "title": "The Duck Race",
+  "level": "Level 3",
+  "file": "books/0115.json",
+  "thumb": "books/thumb-0115.webp"
+ },
+ {
+  "no": "0116",
+  "title": "Sniff",
+  "level": "Level 3",
+  "file": "books/0116.json",
+  "thumb": "books/thumb-0116.webp"
+ },
+ {
+  "no": "0117",
+  "title": "Pond Dipping",
+  "level": "Level 3",
+  "file": "books/0117.json",
+  "thumb": "books/thumb-0117.webp"
+ },
+ {
+  "no": "0118",
+  "title": "The Ice Rink",
+  "level": "Level 3",
+  "file": "books/0118.json",
+  "thumb": "books/thumb-0118.webp"
+ },
+ {
+  "no": "0119",
+  "title": "The Mud Bath",
+  "level": "Level 3",
+  "file": "books/0119.json",
+  "thumb": "books/thumb-0119.webp"
+ },
+ {
+  "no": "0120",
+  "title": "The Steel Band",
+  "level": "Level 3",
+  "file": "books/0120.json",
+  "thumb": "books/thumb-0120.webp"
  }
 ]
