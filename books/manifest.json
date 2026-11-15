@@ -1,5 +1,47 @@
 [
  {
+  "no": "0086",
+  "title": "Creepy-crawly!",
+  "level": "Level 2",
+  "file": "books/0086.json",
+  "thumb": "books/thumb-0086.webp"
+ },
+ {
+  "no": "0087",
+  "title": "Monkey Tricks",
+  "level": "Level 2",
+  "file": "books/0087.json",
+  "thumb": "books/thumb-0087.webp"
+ },
+ {
+  "no": "0088",
+  "title": "Naughty Children",
+  "level": "Level 2",
+  "file": "books/0088.json",
+  "thumb": "books/thumb-0088.webp"
+ },
+ {
+  "no": "0089",
+  "title": "Hey Presto!",
+  "level": "Level 2",
+  "file": "books/0089.json",
+  "thumb": "books/thumb-0089.webp"
+ },
+ {
+  "no": "0090",
+  "title": "A Sinking Feeling",
+  "level": "Level 2",
+  "file": "books/0090.json",
+  "thumb": "books/thumb-0090.webp"
+ },
+ {
+  "no": "0100",
+  "title": "Nobody wanted to play",
+  "level": "Level 3",
+  "file": "books/0100.json",
+  "thumb": "books/thumb-0100.webp"
+ },
+ {
   "no": "0101",
   "title": "The rope swing",
   "level": "Level 3",
