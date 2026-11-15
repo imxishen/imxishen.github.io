@@ -17,7 +17,8 @@ svg.ic{display:block;flex:none}
 .shelf-head{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 8px;font-weight:700}
 .shelf-head button{border:1px solid var(--line);background:#fff;border-radius:8px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
 .shelf-list{overflow-y:auto;padding:4px 8px 12px;display:flex;flex-direction:column;gap:8px}
-.shelf-item{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid transparent;background:#fff;border-radius:12px;padding:8px;width:100%}
+.shelf-item{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid transparent;background:#fff;border-radius:12px;padding:8px;width:100%;transition:transform .15s ease,border-color .15s ease,background .15s ease}
+.shelf-item:active{transform:scale(.97)}
 .shelf-item.on{border-color:var(--green);background:#eef7f0}
 .shelf-item img{width:40px;height:49px;object-fit:cover;border-radius:6px;flex:none}
 .shelf-item .t{font-weight:700;font-size:14px;line-height:1.25}
@@ -29,9 +30,21 @@ body.shelf-closed .shelf-open-btn{display:flex}
 .main{flex:1;display:flex;min-width:0}
 .img-wrap{flex:1;position:relative;background:var(--paper);display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
 .img-wrap img{max-width:100%;max-height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.load-veil{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;background:var(--paper);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.load-veil.show{opacity:1;pointer-events:auto}
+.load-veil img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:blur(7px);opacity:.5}
+.veil-box{position:relative;display:flex;flex-direction:column;align-items:center;padding:18px 22px}
+.veil-spin{width:34px;height:34px;border-radius:50%;border:4px solid #e5dcc3;border-top-color:var(--green);animation:vspin .8s linear infinite}
+@keyframes vspin{to{transform:rotate(360deg)}}
+.veil-title{font-weight:700;font-size:18px;margin-top:13px;text-align:center}
+.veil-sub{color:#7a7263;font-size:14px;margin-top:4px}
+.load-veil.error{cursor:pointer}
+.load-veil.error .veil-spin{display:none}
+.load-veil.error .veil-sub{color:var(--green-d);font-weight:700}
 .page-badge{position:absolute;top:12px;right:12px;background:rgba(32,49,42,.82);color:#fff;border-radius:999px;padding:5px 12px;font-size:13px}
 .fab{display:none}
-.panel{width:344px;flex:none;background:var(--card);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:16px 14px;gap:12px;min-height:0}
+.panel{width:344px;flex:none;background:var(--card);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:16px 14px;gap:12px;min-height:0;transition:opacity .25s ease}
+.main.loading .panel{opacity:.45;pointer-events:none}
 .tag{align-self:flex-start;background:#e3f2e7;color:var(--green-d);font-size:12px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
 .panel h1{font-size:27px;line-height:1.25;margin-top:8px}
 .zh{color:#54604f;font-size:16px;font-weight:600;margin-top:3px;line-height:1.4}
@@ -159,6 +172,7 @@ body.shelf-closed .shelf-open-btn{display:flex}
     </header>
     <div class="img-wrap" id="imgWrap">
       <img id="pageImg" alt="绘本插图">
+      <div class="load-veil" id="loadVeil"><img id="veilImg" alt=""><div class="veil-box"><div class="veil-spin"></div><div class="veil-title" id="veilTitle"></div><div class="veil-sub" id="veilSub">正在打开…</div></div></div>
       <button class="fab fab-shelf" id="fabShelf" aria-label="打开书架"></button>
       <div class="page-badge" id="pageBadge">封面</div>
       <button class="fab fab-settings" id="fabSettings" aria-label="打开设置"></button>
@@ -431,14 +445,51 @@ function renderShelf(){
     list.appendChild(el);
   });
 }
+let pendingNo = null;
+function markShelf(no){
+  document.querySelectorAll('#shelfList .shelf-item').forEach(el => el.classList.toggle('on', el.dataset.no === no));
+}
+function setTitles(e){
+  $('bookTitle').textContent = e.title;
+  $('mBookTitle').textContent = e.title;
+  $('mBookSub').textContent = 'Oxford Reading Tree · ' + (e.level || 'Level 3');
+  $('bookTag').textContent = ('OXFORD READING TREE · ' + (e.level || 'LEVEL 3')).toUpperCase();
+}
+function showVeil(e){
+  pendingNo = e.no;
+  $('veilImg').src = e.thumb || '';
+  $('veilTitle').textContent = e.title;
+  $('veilSub').textContent = '正在打开…';
+  $('loadVeil').classList.remove('error');
+  $('loadVeil').classList.add('show');
+  document.querySelector('.main').classList.add('loading');
+}
+function hideVeil(){
+  $('loadVeil').classList.remove('show');
+  document.querySelector('.main').classList.remove('loading');
+}
+function veilError(){
+  $('loadVeil').classList.add('error');
+  $('veilSub').textContent = '没打开，点一下重试';
+}
+$('loadVeil').onclick = () => {
+  if (!$('loadVeil').classList.contains('error') || !pendingNo) return;
+  const i = LIB.findIndex(b => b.no === pendingNo);
+  if (i >= 0) selectBook(i);
+};
 async function selectBook(i){
   if (i < 0 || i >= LIB.length) return;
   stopSeq();
+  const entry = LIB[i];
+  markShelf(entry.no);
+  setTitles(entry);
+  showVeil(entry);
   const my = ++loadToken;
-  const data = await fetchBook(LIB[i].no).catch(() => null);
-  if (!data || my !== loadToken) return;
+  const data = await fetchBook(entry.no).catch(() => null);
+  if (my !== loadToken) return;
+  if (!data){ veilError(); return; }
   bi = i; bookData = data; page = 0;
-  render(); preloadBook(); prefetchNext();
+  render(); hideVeil(); preloadBook(); prefetchNext();
 }
 
 /* ---- controls ---- */
