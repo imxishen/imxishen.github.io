@@ -98,6 +98,27 @@
   "thumb": "books/thumb-0033.webp"
  },
  {
+  "no": "0034",
+  "title": "Go On, Mum!",
+  "level": "Level 1+",
+  "file": "books/0034.json",
+  "thumb": "books/thumb-0034.webp"
+ },
+ {
+  "no": "0035",
+  "title": "Look After Me",
+  "level": "Level 1+",
+  "file": "books/0035.json",
+  "thumb": "books/thumb-0035.webp"
+ },
+ {
+  "no": "0036",
+  "title": "Presents for Dad",
+  "level": "Level 1+",
+  "file": "books/0036.json",
+  "thumb": "books/thumb-0036.webp"
+ },
+ {
   "no": "0086",
   "title": "Creepy-crawly!",
   "level": "Level 2",
