@@ -182,6 +182,27 @@
     "thumb": "books/thumb-0045.webp"
   },
   {
+    "no": "0046",
+    "title": "What a Din!",
+    "level": "Level 1+",
+    "file": "books/0046.json",
+    "thumb": "books/thumb-0046.webp"
+  },
+  {
+    "no": "0047",
+    "title": "See Me Skip",
+    "level": "Level 1+",
+    "file": "books/0047.json",
+    "thumb": "books/thumb-0047.webp"
+  },
+  {
+    "no": "0048",
+    "title": "The Mud Pie",
+    "level": "Level 1+",
+    "file": "books/0048.json",
+    "thumb": "books/thumb-0048.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
