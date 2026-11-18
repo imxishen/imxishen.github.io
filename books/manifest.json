@@ -675,5 +675,75 @@
   "level": "Level 4",
   "file": "books/0133.json",
   "thumb": "books/thumb-0133.webp"
+ },
+ {
+  "no": "0141",
+  "title": "Dad's Jacket",
+  "level": "Level 4",
+  "file": "books/0141.json",
+  "thumb": "books/thumb-0141.webp"
+ },
+ {
+  "no": "0142",
+  "title": "Stuck in the Mud",
+  "level": "Level 4",
+  "file": "books/0142.json",
+  "thumb": "books/thumb-0142.webp"
+ },
+ {
+  "no": "0143",
+  "title": "The Den",
+  "level": "Level 4",
+  "file": "books/0143.json",
+  "thumb": "books/thumb-0143.webp"
+ },
+ {
+  "no": "0144",
+  "title": "Look Smart",
+  "level": "Level 4",
+  "file": "books/0144.json",
+  "thumb": "books/thumb-0144.webp"
+ },
+ {
+  "no": "0145",
+  "title": "The magic key",
+  "level": "Level 5",
+  "file": "books/0145.json",
+  "thumb": "books/thumb-0145.webp"
+ },
+ {
+  "no": "0146",
+  "title": "Pirate Adventure",
+  "level": "Level 5",
+  "file": "books/0146.json",
+  "thumb": "books/thumb-0146.webp"
+ },
+ {
+  "no": "0147",
+  "title": "The Dragon Tree",
+  "level": "Level 5",
+  "file": "books/0147.json",
+  "thumb": "books/thumb-0147.webp"
+ },
+ {
+  "no": "0148",
+  "title": "Gran",
+  "level": "Level 5",
+  "file": "books/0148.json",
+  "thumb": "books/thumb-0148.webp"
+ },
+ {
+  "no": "0149",
+  "title": "Castle Adventure",
+  "level": "Level 5",
+  "file": "books/0149.json",
+  "thumb": "books/thumb-0149.webp"
+ },
+ {
+  "no": "0150",
+  "title": "Village in the Snow",
+  "level": "Level 5",
+  "file": "books/0150.json",
+  "thumb": "books/thumb-0150.webp"
  }
 ]
