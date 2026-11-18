@@ -77,6 +77,27 @@
   "thumb": "books/thumb-0030.webp"
  },
  {
+  "no": "0031",
+  "title": "Top Dog",
+  "level": "Level 1+",
+  "file": "books/0031.json",
+  "thumb": "books/thumb-0031.webp"
+ },
+ {
+  "no": "0032",
+  "title": "What Dogs Like",
+  "level": "Level 1+",
+  "file": "books/0032.json",
+  "thumb": "books/thumb-0032.webp"
+ },
+ {
+  "no": "0033",
+  "title": "Go Away, Cat",
+  "level": "Level 1+",
+  "file": "books/0033.json",
+  "thumb": "books/thumb-0033.webp"
+ },
+ {
   "no": "0086",
   "title": "Creepy-crawly!",
   "level": "Level 2",
