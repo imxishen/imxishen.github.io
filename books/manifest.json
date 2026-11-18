@@ -56,6 +56,27 @@
   "thumb": "books/thumb-0027.webp"
  },
  {
+  "no": "0028",
+  "title": "Look at Me",
+  "level": "Level 1+",
+  "file": "books/0028.json",
+  "thumb": "books/thumb-0028.webp"
+ },
+ {
+  "no": "0029",
+  "title": "Go Away, Floppy",
+  "level": "Level 1+",
+  "file": "books/0029.json",
+  "thumb": "books/thumb-0029.webp"
+ },
+ {
+  "no": "0030",
+  "title": "Kipper's Diary",
+  "level": "Level 1+",
+  "file": "books/0030.json",
+  "thumb": "books/thumb-0030.webp"
+ },
+ {
   "no": "0086",
   "title": "Creepy-crawly!",
   "level": "Level 2",
