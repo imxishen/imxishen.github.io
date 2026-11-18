@@ -287,6 +287,27 @@
     "thumb": "books/thumb-0060.webp"
   },
   {
+    "no": "0061",
+    "title": "New Trainers",
+    "level": "Level 2",
+    "file": "books/0061.json",
+    "thumb": "books/thumb-0061.webp"
+  },
+  {
+    "no": "0062",
+    "title": "What a Bad Dog!",
+    "level": "Level 2",
+    "file": "books/0062.json",
+    "thumb": "books/thumb-0062.webp"
+  },
+  {
+    "no": "0063",
+    "title": "The Dream",
+    "level": "Level 2",
+    "file": "books/0063.json",
+    "thumb": "books/thumb-0063.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
