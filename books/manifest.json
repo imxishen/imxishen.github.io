@@ -245,6 +245,27 @@
     "thumb": "books/thumb-0054.webp"
   },
   {
+    "no": "0055",
+    "title": "Shopping",
+    "level": "Level 1+",
+    "file": "books/0055.json",
+    "thumb": "books/thumb-0055.webp"
+  },
+  {
+    "no": "0056",
+    "title": "What a Mess!",
+    "level": "Level 1+",
+    "file": "books/0056.json",
+    "thumb": "books/thumb-0056.webp"
+  },
+  {
+    "no": "0057",
+    "title": "Making Faces",
+    "level": "Level 1+",
+    "file": "books/0057.json",
+    "thumb": "books/thumb-0057.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
