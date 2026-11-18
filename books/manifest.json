@@ -224,6 +224,27 @@
     "thumb": "books/thumb-0051.webp"
   },
   {
+    "no": "0052",
+    "title": "Good Old Mum",
+    "level": "Level 1+",
+    "file": "books/0052.json",
+    "thumb": "books/thumb-0052.webp"
+  },
+  {
+    "no": "0053",
+    "title": "The Headache",
+    "level": "Level 1+",
+    "file": "books/0053.json",
+    "thumb": "books/thumb-0053.webp"
+  },
+  {
+    "no": "0054",
+    "title": "The Pet Shop",
+    "level": "Level 1+",
+    "file": "books/0054.json",
+    "thumb": "books/thumb-0054.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
