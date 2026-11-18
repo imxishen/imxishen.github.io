@@ -35,6 +35,27 @@
   "thumb": "books/thumb-0024.webp"
  },
  {
+  "no": "0025",
+  "title": "Hide and Seek",
+  "level": "Level 1+",
+  "file": "books/0025.json",
+  "thumb": "books/thumb-0025.webp"
+ },
+ {
+  "no": "0026",
+  "title": "Reds and Blues",
+  "level": "Level 1+",
+  "file": "books/0026.json",
+  "thumb": "books/thumb-0026.webp"
+ },
+ {
+  "no": "0027",
+  "title": "Big Feet",
+  "level": "Level 1+",
+  "file": "books/0027.json",
+  "thumb": "books/thumb-0027.webp"
+ },
+ {
   "no": "0086",
   "title": "Creepy-crawly!",
   "level": "Level 2",
