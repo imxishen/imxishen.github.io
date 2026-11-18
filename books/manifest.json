@@ -661,5 +661,12 @@
   "level": "Level 4",
   "file": "books/0131.json",
   "thumb": "books/thumb-0131.webp"
+ },
+ {
+  "no": "0132",
+  "title": "The weather vane",
+  "level": "Level 4",
+  "file": "books/0132.json",
+  "thumb": "books/thumb-0132.webp"
  }
 ]
