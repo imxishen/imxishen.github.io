@@ -308,6 +308,27 @@
     "thumb": "books/thumb-0063.webp"
   },
   {
+    "no": "0064",
+    "title": "The Go-kart",
+    "level": "Level 2",
+    "file": "books/0064.json",
+    "thumb": "books/thumb-0064.webp"
+  },
+  {
+    "no": "0065",
+    "title": "A New Dog",
+    "level": "Level 2",
+    "file": "books/0065.json",
+    "thumb": "books/thumb-0065.webp"
+  },
+  {
+    "no": "0066",
+    "title": "The Toys' Party",
+    "level": "Level 2",
+    "file": "books/0066.json",
+    "thumb": "books/thumb-0066.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
