@@ -266,6 +266,27 @@
     "thumb": "books/thumb-0057.webp"
   },
   {
+    "no": "0058",
+    "title": "Goal!",
+    "level": "Level 1+",
+    "file": "books/0058.json",
+    "thumb": "books/thumb-0058.webp"
+  },
+  {
+    "no": "0059",
+    "title": "The Journey",
+    "level": "Level 1+",
+    "file": "books/0059.json",
+    "thumb": "books/thumb-0059.webp"
+  },
+  {
+    "no": "0060",
+    "title": "Who Did That?",
+    "level": "Level 1+",
+    "file": "books/0060.json",
+    "thumb": "books/thumb-0060.webp"
+  },
+  {
     "no": "0086",
     "title": "Creepy-crawly!",
     "level": "Level 2",
