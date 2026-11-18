@@ -331,77 +331,107 @@
  {
   "no": "0067",
   "title": "The Water Fight",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0067.json",
+  "thumb": "books/thumb-0067.webp"
  },
  {
   "no": "0068",
   "title": "The Baby-sitter",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0068.json",
+  "thumb": "books/thumb-0068.webp"
  },
  {
   "no": "0069",
   "title": "Floppy's Bath",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0069.json",
+  "thumb": "books/thumb-0069.webp"
  },
  {
   "no": "0070",
   "title": "Kipper's Balloon",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0070.json",
+  "thumb": "books/thumb-0070.webp"
  },
  {
   "no": "0071",
   "title": "Kipper's Birthday",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0071.json",
+  "thumb": "books/thumb-0071.webp"
  },
  {
   "no": "0072",
   "title": "Spots!",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0072.json",
+  "thumb": "books/thumb-0072.webp"
  },
  {
   "no": "0073",
   "title": "The Foggy Day",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0073.json",
+  "thumb": "books/thumb-0073.webp"
  },
  {
   "no": "0074",
   "title": "The wobbly tooth",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0074.json",
+  "thumb": "books/thumb-0074.webp"
  },
  {
   "no": "0075",
   "title": "Biff's aeroplane",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0075.json",
+  "thumb": "books/thumb-0075.webp"
  },
  {
   "no": "0076",
   "title": "The Chase",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0076.json",
+  "thumb": "books/thumb-0076.webp"
  },
  {
   "no": "0077",
   "title": "Floppy the hero",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0077.json",
+  "thumb": "books/thumb-0077.webp"
  },
  {
   "no": "0078",
   "title": "Kipper's laces",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0078.json",
+  "thumb": "books/thumb-0078.webp"
  },
  {
   "no": "0079",
   "title": "Put It Back",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0079.json",
+  "thumb": "books/thumb-0079.webp"
  },
  {
   "no": "0080",
   "title": "Poor Floppy",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0080.json",
+  "thumb": "books/thumb-0080.webp"
  },
  {
   "no": "0081",
   "title": "The Big Egg",
-  "level": "Level 2"
+  "level": "Level 2",
+  "file": "books/0081.json",
+  "thumb": "books/thumb-0081.webp"
  },
  {
   "no": "0086",
