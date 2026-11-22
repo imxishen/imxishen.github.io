@@ -434,6 +434,34 @@
   "thumb": "books/thumb-0081.webp"
  },
  {
+  "no": "0082",
+  "title": "A Present for Mum",
+  "level": "Level 2",
+  "file": "books/0082.json",
+  "thumb": "books/thumb-0082.webp"
+ },
+ {
+  "no": "0083",
+  "title": "The Hole in the Sand",
+  "level": "Level 2",
+  "file": "books/0083.json",
+  "thumb": "books/thumb-0083.webp"
+ },
+ {
+  "no": "0084",
+  "title": "In a Bit",
+  "level": "Level 2",
+  "file": "books/0084.json",
+  "thumb": "books/thumb-0084.webp"
+ },
+ {
+  "no": "0085",
+  "title": "It's the Weather",
+  "level": "Level 2",
+  "file": "books/0085.json",
+  "thumb": "books/thumb-0085.webp"
+ },
+ {
   "no": "0086",
   "title": "Creepy-crawly!",
   "level": "Level 2",
@@ -467,6 +495,69 @@
   "level": "Level 2",
   "file": "books/0090.json",
   "thumb": "books/thumb-0090.webp"
+ },
+ {
+  "no": "0091",
+  "title": "The Little Dragon",
+  "level": "Level 2",
+  "file": "books/0091.json",
+  "thumb": "books/thumb-0091.webp"
+ },
+ {
+  "no": "0092",
+  "title": "The lost puppy",
+  "level": "Level 2",
+  "file": "books/0092.json",
+  "thumb": "books/thumb-0092.webp"
+ },
+ {
+  "no": "0093",
+  "title": "New trees",
+  "level": "Level 2",
+  "file": "books/0093.json",
+  "thumb": "books/thumb-0093.webp"
+ },
+ {
+  "no": "0094",
+  "title": "The Band",
+  "level": "Level 2",
+  "file": "books/0094.json",
+  "thumb": "books/thumb-0094.webp"
+ },
+ {
+  "no": "0095",
+  "title": "Up and Down",
+  "level": "Level 2",
+  "file": "books/0095.json",
+  "thumb": "books/thumb-0095.webp"
+ },
+ {
+  "no": "0096",
+  "title": "What is it?",
+  "level": "Level 2",
+  "file": "books/0096.json",
+  "thumb": "books/thumb-0096.webp"
+ },
+ {
+  "no": "0097",
+  "title": "By the Stream",
+  "level": "Level 3",
+  "file": "books/0097.json",
+  "thumb": "books/thumb-0097.webp"
+ },
+ {
+  "no": "0098",
+  "title": "A Cat in the Tree",
+  "level": "Level 3",
+  "file": "books/0098.json",
+  "thumb": "books/thumb-0098.webp"
+ },
+ {
+  "no": "0099",
+  "title": "The Egg Hunt",
+  "level": "Level 3",
+  "file": "books/0099.json",
+  "thumb": "books/thumb-0099.webp"
  },
  {
   "no": "0100",
