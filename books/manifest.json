@@ -1146,5 +1146,117 @@
     "level": "Level 6",
     "file": "books/0184.json",
     "thumb": "books/thumb-0184.webp"
+  },
+  {
+    "no": "0187",
+    "title": "The Broken Roof",
+    "level": "Level 7",
+    "file": "books/0187.json",
+    "thumb": "books/thumb-0187.webp"
+  },
+  {
+    "no": "0188",
+    "title": "Lost in the Jungle",
+    "level": "Level 7",
+    "file": "books/0188.json",
+    "thumb": "books/thumb-0188.webp"
+  },
+  {
+    "no": "0190",
+    "title": "Red Planet",
+    "level": "Level 7",
+    "file": "books/0190.json",
+    "thumb": "books/thumb-0190.webp"
+  },
+  {
+    "no": "0191",
+    "title": "The Willow Pattern Plot",
+    "level": "Level 7",
+    "file": "books/0191.json",
+    "thumb": "books/thumb-0191.webp"
+  },
+  {
+    "no": "0193",
+    "title": "The Bully",
+    "level": "Level 7",
+    "file": "books/0193.json",
+    "thumb": "books/thumb-0193.webp"
+  },
+  {
+    "no": "0194",
+    "title": "Chinese Adventure",
+    "level": "Level 7",
+    "file": "books/0194.json",
+    "thumb": "books/thumb-0194.webp"
+  },
+  {
+    "no": "0195",
+    "title": "The Hunt for Gold",
+    "level": "Level 7",
+    "file": "books/0195.json",
+    "thumb": "books/thumb-0195.webp"
+  },
+  {
+    "no": "0196",
+    "title": "The Jigsaw Puzzle",
+    "level": "Level 7",
+    "file": "books/0196.json",
+    "thumb": "books/thumb-0196.webp"
+  },
+  {
+    "no": "0197",
+    "title": "The Motorway",
+    "level": "Level 7",
+    "file": "books/0197.json",
+    "thumb": "books/thumb-0197.webp"
+  },
+  {
+    "no": "0198",
+    "title": "Roman Adventure",
+    "level": "Level 7",
+    "file": "books/0198.json",
+    "thumb": "books/thumb-0198.webp"
+  },
+  {
+    "no": "0199",
+    "title": "The Power Cut",
+    "level": "Level 7",
+    "file": "books/0199.json",
+    "thumb": "books/thumb-0199.webp"
+  },
+  {
+    "no": "0200",
+    "title": "Australian Adventure",
+    "level": "Level 7",
+    "file": "books/0200.json",
+    "thumb": "books/thumb-0200.webp"
+  },
+  {
+    "no": "0201",
+    "title": "The Riddle Stone Part 1",
+    "level": "Level 7",
+    "file": "books/0201.json",
+    "thumb": "books/thumb-0201.webp"
+  },
+  {
+    "no": "0202",
+    "title": "The Riddle Stone Part 2",
+    "level": "Level 7",
+    "file": "books/0202.json",
+    "thumb": "books/thumb-0202.webp"
+  },
+  {
+    "no": "0203",
+    "title": "A Sea Mystery",
+    "level": "Level 7",
+    "file": "books/0203.json",
+    "thumb": "books/thumb-0203.webp"
+  },
+  {
+    "no": "0204",
+    "title": "The Big Breakfast",
+    "level": "Level 7",
+    "file": "books/0204.json",
+    "thumb": "books/thumb-0204.webp"
   }
 ]
